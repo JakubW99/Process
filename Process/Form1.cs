@@ -172,54 +172,36 @@ namespace Process
             listView1.Items.Add(" DH = " + DH);
 
         }
-        public string Checked0()
-        {
-            var check0 = "";
-            foreach (object Item in checkedListBox1.CheckedItems)
-            {
-                check0 = Item.ToString();
-
-            }
-            return check0;
-           
-
-        }
-        public string Checked1()
-        {
-            var check1 = "";
-            foreach (object Item in checkedListBox2.CheckedItems)
-            {
-                check1 = Item.ToString();
-
-            }
-            return check1;
-        }
-
+       
 
         public void MOV()
         {
-            var List = new List<string> { "AL", "AH", "BL", "BH", "CL", "CH", "DL", "DH" };
+            var list = new List<string> { "AL", "AH", "BL", "BH", "CL", "CH", "DL", "DH" };
             var list1 = new List<string> { AL, AH, BL, BH, CL, CH, DL, DH };
             var itemToChange = "";
             var itemChanging = "";
             if(checkedListBox3.SelectedItem.ToString() == "MOV")
             {
-                foreach ( var item in List)
+                
+                foreach (var value in list1)
                 {
-                    foreach (var value in list1)
+                    foreach (var item in list)
                     {
 
 
-                        if (Checked0() == item.)
+                        if (checkedListBox1.SelectedItem.ToString() == item)
                         {
                             itemToChange = value;
                         }
-                        if (Checked1() == item)
+                        if (checkedListBox2.SelectedItem.ToString() == item)
                         {
-                            itemChanging = value;
+                            item.Replace(item,value);
                         }
                     }
+
                 }
+
+
                 MessageBox.Show(itemToChange +" "+itemChanging, "bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
