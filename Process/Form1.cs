@@ -16,7 +16,7 @@ namespace Process
         {
             InitializeComponent();
         }
-        public string AL, AH, BL, BH, CL, CH, DL, DH;
+       
        
 
 
@@ -36,11 +36,11 @@ namespace Process
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AL = textBox1.Text;
-            if (AL.Length == 2)
+             
+            if (textBox1.Text.Length == 2)
             {
 
-                textBox1.Text = AL.ToUpper();
+                textBox1.Text.ToUpper();
             }
             else
             {
@@ -53,11 +53,11 @@ namespace Process
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AH = textBox2.Text.ToUpper();
-            if (AH.Length == 2)
+           
+            if (textBox2.Text.Length == 2)
             {
 
-                textBox2.Text = AH.ToUpper();
+                textBox2.Text.ToUpper();
             }
             else
             {
@@ -69,11 +69,11 @@ namespace Process
 
         private void button3_Click(object sender, EventArgs e)
         {
-            BL = textBox3.Text;
-            if (BL.Length == 2)
+           
+            if (textBox3.Text.Length == 2)
             {
 
-                textBox3.Text = BL.ToUpper();
+                textBox3.Text.ToUpper();
             }
             else
             {
@@ -86,11 +86,11 @@ namespace Process
 
         private void button4_Click(object sender, EventArgs e)
         {
-            BH = textBox4.Text;
-            if (BH.Length == 2)
+          
+            if (textBox4.Text.Length == 2)
             {
 
-                textBox4.Text = BH.ToUpper();
+                textBox4.Text.ToUpper();
             }
             else
             {
@@ -100,11 +100,11 @@ namespace Process
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            CL = textBox5.Text;
-            if (CL.Length == 2)
+           
+            if (textBox5.Text.Length == 2)
             {
 
-                textBox5.Text = CL.ToUpper();
+                textBox5.Text.ToUpper();
             }
             else
             {
@@ -117,11 +117,11 @@ namespace Process
 
         private void button6_Click(object sender, EventArgs e)
         {
-            CH = textBox6.Text;
-            if (CH.Length == 2)
+            
+            if (textBox6.Text.Length == 2)
             {
 
-                textBox6.Text = CH.ToUpper();
+                textBox6.Text.ToUpper();
             }
             else
             {
@@ -131,11 +131,11 @@ namespace Process
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            DL = textBox7.Text;
-            if (DL.Length == 2)
+           
+            if (textBox7.Text.Length == 2)
             {
 
-                textBox7.Text = DL.ToUpper();
+                textBox7.Text.ToUpper();
             }
             else
             {
@@ -145,11 +145,11 @@ namespace Process
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            DH = textBox8.Text;
-            if (DH.Length == 2)
+           
+            if (textBox8.Text.Length == 2)
             {
 
-                textBox8.Text = DH.ToUpper();
+                textBox8.Text.ToUpper();
             }
             else
             {
@@ -162,48 +162,55 @@ namespace Process
         private void button9_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
-            listView1.Items.Add(" AL = " + AL);
-            listView1.Items.Add(" AH = " + AH);
-            listView1.Items.Add(" BL = " + BL);
-            listView1.Items.Add(" BH = " + BH);
-            listView1.Items.Add(" CL = " + CL);
-            listView1.Items.Add(" CH = " + CH);
-            listView1.Items.Add(" DL = " + DL);
-            listView1.Items.Add(" DH = " + DH);
+            listView1.Items.Add(" AL = " + textBox1.Text);
+            listView1.Items.Add(" AH = " + textBox2.Text);
+            listView1.Items.Add(" BL = " + textBox3.Text);
+            listView1.Items.Add(" BH = " + textBox4.Text);
+            listView1.Items.Add(" CL = " + textBox5.Text);
+            listView1.Items.Add(" CH = " + textBox6.Text);
+            listView1.Items.Add(" DL = " + textBox7.Text);
+            listView1.Items.Add(" DH = " + textBox8.Text);
 
         }
        
 
         public void MOV()
         {
-            var list = new List<string> { "AL", "AH", "BL", "BH", "CL", "CH", "DL", "DH" };
-            var list1 = new List<string> { AL, AH, BL, BH, CL, CH, DL, DH };
-            var itemToChange = "";
-            var itemChanging = "";
-            if(checkedListBox3.SelectedItem.ToString() == "MOV")
+            if (checkedListBox3.SelectedItem.ToString() == "MOV")
             {
-                
-                foreach (var value in list1)
-                {
-                    foreach (var item in list)
-                    {
-
-
-                        if (checkedListBox1.SelectedItem.ToString() == item)
-                        {
-                            itemToChange = value;
-                        }
-                        if (checkedListBox2.SelectedItem.ToString() == item)
-                        {
-                            item.Replace(item,value);
-                        }
-                    }
-
-                }
-
-
-                MessageBox.Show(itemToChange +" "+itemChanging, "bląd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                listView2.Items.Clear();
+                SelectFromRegister().Text = SelectToRegister().Text;
+                listView2.Items.Add(" AL = " + textBox1.Text);
+                listView2.Items.Add(" AH = " + textBox2.Text);
+                listView2.Items.Add(" BL = " + textBox3.Text);
+                listView2.Items.Add(" BH = " + textBox4.Text);
+                listView2.Items.Add(" CL = " + textBox5.Text);
+                listView2.Items.Add(" CH = " + textBox6.Text);
+                listView2.Items.Add(" DL = " + textBox7.Text);
+                listView2.Items.Add(" DH = " + textBox8.Text);
             }
+        }
+        public TextBox SelectToRegister()
+        {
+            if (checkedListBox1.SelectedItem.ToString() == "AL") return textBox1;
+            if (checkedListBox1.SelectedItem.ToString() == "AH") return textBox2;
+            if (checkedListBox1.SelectedItem.ToString() == "BL") return textBox3;
+            if (checkedListBox1.SelectedItem.ToString() == "BH") return textBox4;
+            if (checkedListBox1.SelectedItem.ToString() == "CL") return textBox5;
+            if (checkedListBox1.SelectedItem.ToString() == "CH") return textBox6;
+            if (checkedListBox1.SelectedItem.ToString() == "DL") return textBox7;
+            else  return textBox8;
+        }
+        public TextBox SelectFromRegister()
+        {
+            if (checkedListBox2.SelectedItem.ToString() == "AL") return textBox1;
+            if (checkedListBox2.SelectedItem.ToString() == "AH") return textBox2;
+            if (checkedListBox2.SelectedItem.ToString() == "BL") return textBox3;
+            if (checkedListBox2.SelectedItem.ToString() == "BH") return textBox4;
+            if (checkedListBox2.SelectedItem.ToString() == "CL") return textBox5;
+            if (checkedListBox2.SelectedItem.ToString() == "CH") return textBox6;
+            if (checkedListBox2.SelectedItem.ToString() == "DL") return textBox7;
+            else return textBox8;
         }
         private void button10_Click(object sender, EventArgs e)
         {
